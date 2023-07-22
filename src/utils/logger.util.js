@@ -1,8 +1,10 @@
 const moment = require("moment");
 const path = require("path");
 const fs = require("fs");
+const parseDevice = require("./parseDevice.util");
 
 const logFormat = (tokens, req, res) => {
+  const { device } = res.locals;
   const date = `[${tokens.date(req, res, "web")}]`;
   const url = `"${tokens.method(req, res)} ${tokens.url(
     req,
@@ -20,6 +22,7 @@ const logFormat = (tokens, req, res) => {
     responseTime,
     ipAddress,
     userAgent,
+    parseDevice(device),
   ].join(" ");
 };
 
