@@ -1,11 +1,12 @@
 const { Router } = require("express");
 const { response, logFormat, logOptions } = require("../utils");
-const { xAccessTokenCheck } = require("../middlewares");
+const { deviceDetector, xAccessTokenCheck } = require("../middlewares");
 const appRoute = require("./app/app.route");
 const morgan = require("morgan");
 
 const router = Router();
 
+router.use(deviceDetector);
 router.use(morgan(logFormat, logOptions()));
 router.use("/api", xAccessTokenCheck, appRoute);
 
