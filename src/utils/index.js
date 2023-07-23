@@ -10,4 +10,5 @@ module.exports = {
   hashPassword: require("./hashPassword.util"),
   capitalizeName: require("./parseName.util").capitalizeName,
   parseFullName: require("./parseName.util").parseFullName,
+  files: require("./files.util"),
 };

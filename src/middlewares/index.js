@@ -4,4 +4,5 @@ module.exports = {
   isAuth: require("./authentication/authentication.middleware").isAuth,
   isAdmin: require("./authentication/authentication.middleware").isAdmin,
   userMiddleware: require("./userManagement/user.middleware"),
+  fileMiddleware: require("./fileManagement/file.middleware"),
 };
