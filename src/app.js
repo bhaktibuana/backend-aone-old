@@ -7,6 +7,7 @@ const router = require("./routes");
 
 const app = express();
 
+app.enable("trust proxy");
 app.use(helmet());
 app.use(cors());
 app.use(express.json());

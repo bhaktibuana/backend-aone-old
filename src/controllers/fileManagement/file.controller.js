@@ -2,7 +2,7 @@ const { File } = require("../../models");
 const {
   response,
   serverErrorResponse,
-  consoleLog,
+  consoleError,
   parseDevice,
   files,
   generateMetadata,
@@ -79,7 +79,7 @@ const createData = async (req, res) => {
       response("Failed, choose at least one file", 400, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -133,7 +133,7 @@ const getData = async (req, res) => {
       response("File not found", 404, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -150,7 +150,7 @@ const deleteData = async (req, res) => {
       response("Delete file failed", 400, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };

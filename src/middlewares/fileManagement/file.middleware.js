@@ -2,7 +2,7 @@ const { User, UserRepo, File } = require("../../models");
 const {
   response,
   serverErrorResponse,
-  consoleLog,
+  consoleError,
   files,
 } = require("../../utils");
 const { uploadService } = require("../../services");
@@ -45,7 +45,7 @@ const checkApiKeyActive = async (req, res, next) => {
       response("Invalid API KEY", 400, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -80,7 +80,7 @@ const uploadSingleFile = (req, res, next) => {
       }
     });
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -106,7 +106,7 @@ const uploadMultipleFile = (req, res, next) => {
       }
     });
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -175,7 +175,7 @@ const checkDataExist = async (req, res, next) => {
       response("Selected data doesn't exist", 400, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
