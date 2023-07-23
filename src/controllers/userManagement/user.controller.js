@@ -13,7 +13,7 @@ const {
   serverErrorResponse,
   capitalizeName,
   parseFullName,
-  consoleLog,
+  consoleError,
   generateMetadata,
   parseDevice,
 } = require("../../utils");
@@ -81,7 +81,7 @@ const register = async (req, res) => {
       });
     });
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -110,7 +110,7 @@ const verifyEmail = async (req, res) => {
       response("Verify email failed", 400, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -175,7 +175,7 @@ const login = async (req, res) => {
       response("Login failed, wrong username or password", 404, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -219,7 +219,7 @@ const regenerateOtp = async (req, res) => {
       response("Regenerate OTP failed", 400, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -267,7 +267,7 @@ const verifyLogin = async (req, res) => {
       response(verifyOtpPayload.message, 400, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -292,7 +292,7 @@ const getDetail = async (req, res) => {
       response("User data not found", 404, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -328,7 +328,7 @@ const getData = async (req, res) => {
       response("User data not found", 404, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };

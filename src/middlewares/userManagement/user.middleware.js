@@ -1,5 +1,5 @@
 const { User, UserRole } = require("../../models");
-const { response, serverErrorResponse, consoleLog } = require("../../utils");
+const { response, serverErrorResponse, consoleError } = require("../../utils");
 
 const checkEmailExist = async (req, res, next) => {
   const { email } = req.body;
@@ -11,7 +11,7 @@ const checkEmailExist = async (req, res, next) => {
       next();
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -26,7 +26,7 @@ const checkUsernameExist = async (req, res, next) => {
       next();
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };
@@ -41,7 +41,7 @@ const getUserRoleData = async (req, res, next) => {
       response("User role data not found", 404, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };

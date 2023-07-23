@@ -1,5 +1,5 @@
 const { UserRepo } = require("../../models");
-const { response, serverErrorResponse, consoleLog } = require("../../utils");
+const { response, serverErrorResponse, consoleError } = require("../../utils");
 
 const getDetail = async (req, res) => {
   const { tokenPayload } = res.locals;
@@ -14,7 +14,7 @@ const getDetail = async (req, res) => {
       response("User repository data not found", 404, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };

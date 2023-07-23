@@ -1,5 +1,5 @@
 const { UserRole } = require("../../models");
-const { response, serverErrorResponse, consoleLog } = require("../../utils");
+const { response, serverErrorResponse, consoleError } = require("../../utils");
 
 const getData = async (req, res) => {
   try {
@@ -10,7 +10,7 @@ const getData = async (req, res) => {
       response("User role data not found", 404, res);
     }
   } catch (error) {
-    consoleLog("Server Error", error);
+    consoleError("Server Error", error);
     serverErrorResponse(error, res);
   }
 };

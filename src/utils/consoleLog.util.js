@@ -5,4 +5,12 @@ const consoleLog = (title, payload) => {
   console.log(`[${title}] =>`, payload);
 };
 
-module.exports = consoleLog;
+const consoleError = (title, payload) => {
+  if (config.nodeEnv === "production") return;
+  console.log(`[${title}] =>`, payload);
+};
+
+module.exports = {
+  consoleLog,
+  consoleError,
+};
