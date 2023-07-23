@@ -3,16 +3,16 @@ const handlebars = require("handlebars");
 const path = require("path");
 const fs = require("fs");
 const { config } = require("../../configs");
-const { consoleLog } = require("../../utils");
+const { consoleLog, consoleError } = require("../../utils");
 
-const viewPath = path.join(__dirname, "../../views");
+const viewPath = path.join(process.cwd(), "./src/views");
 
 const transport = nodemailer.createTransport({
   port: parseInt(config.smtpPort),
   host: config.smtpHost,
   auth: {
     user: config.smtpUsername,
-    pass: config.dbPassword,
+    pass: config.smtpPassword,
   },
   secure: true,
 });
@@ -40,7 +40,7 @@ const readHTMLFile = (path, callback) => {
 const sendEmail = (subject, htmlName, context, recipient) => {
   readHTMLFile(`${viewPath}/${htmlName}.html`, (error, html) => {
     if (error) {
-      consoleLog("Render View Error", error);
+      consoleError("Render View Error", error);
       return;
     }
 
@@ -51,7 +51,7 @@ const sendEmail = (subject, htmlName, context, recipient) => {
       mailOptions(subject, htmlResult, recipient),
       (error, response) => {
         if (error) {
-          consoleLog("SMTP Error", error);
+          consoleError("SMTP Error", error);
         } else {
           consoleLog("SMTP Success", response);
         }
