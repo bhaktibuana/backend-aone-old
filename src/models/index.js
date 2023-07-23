@@ -8,6 +8,7 @@ const models = {
   User: require("./user.model"),
   UserLogin: require("./userLogin.model"),
   UserRepo: require("./userRepo.model"),
+  File: require("./file.model"),
 };
 
 Object.keys(models).forEach((modelName) => {
