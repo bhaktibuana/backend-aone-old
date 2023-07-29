@@ -262,7 +262,7 @@ const verifyLogin = async (req, res) => {
         where: { userId },
       });
 
-      response("Login success", 200, res, { ...result.dataValues, token });
+      response("Login success", 200, res, { id: result.dataValues.id, token });
     } else {
       response(verifyOtpPayload.message, 400, res);
     }
