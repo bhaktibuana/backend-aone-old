@@ -4,6 +4,7 @@ dotenvConfig();
 const serverPort = process.env.SERVER_PORT;
 const jwtSecretKey = process.env.JWT_SECRET_KEY;
 const jwtExpiredTime = process.env.JWT_EXPIRED_TIME;
+const xAccessToken = process.env.X_ACCESS_TOKEN;
 const dbHost = process.env.DB_HOST;
 const dbUsername = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
@@ -21,8 +22,7 @@ const config =
         serverPort: 3001,
         jwtSecretKey: jwtSecretKey !== undefined ? jwtSecretKey : "",
         jwtExpiredTime: jwtExpiredTime !== undefined ? jwtExpiredTime : "",
-        xAccessToken: "api-aone",
-        xAccessTokenTest: "@p!.@0ne",
+        xAccessToken: xAccessToken !== undefined ? xAccessToken : "",
         dbHost: dbHost !== undefined ? dbHost : "",
         dbUsername: dbUsername !== undefined ? dbUsername : "",
         dbPassword: dbPassword !== undefined ? dbPassword : "",
@@ -38,8 +38,7 @@ const config =
         serverPort: serverPort !== undefined ? parseInt(serverPort) : "",
         jwtSecretKey: jwtSecretKey !== undefined ? jwtSecretKey : "",
         jwtExpiredTime: jwtExpiredTime !== undefined ? jwtExpiredTime : "",
-        xAccessToken: "api-aone",
-        xAccessTokenTest: "@p!.@0ne",
+        xAccessToken: xAccessToken !== undefined ? xAccessToken : "",
         dbHost: dbHost !== undefined ? dbHost : "",
         dbUsername: dbUsername !== undefined ? dbUsername : "",
         dbPassword: dbPassword !== undefined ? dbPassword : "",
